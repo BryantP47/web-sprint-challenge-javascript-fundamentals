@@ -68,13 +68,12 @@ const zooAnimals = [
   function animalNames(){
    const displayNames = [];
     zooAnimals.forEach(function(item){
-   
-   
+     displayNames.push(`name: ${item.animal_name}, scientific: ${item.scientific_name}`);
    });
-   return displayNames.push(`${item.animal_name}, ${item.scientific_name}`);
-  
+
+  return displayNames
    }
-//  console.log(displayNames)
+  // console.log()
 
   /* 🦁🦁🦁 Request 2: .map() 🦁🦁🦁
   The zoo needs a list of all their animal's names converted to lower case. 
@@ -84,10 +83,11 @@ const zooAnimals = [
 
   function lowerCaseNames(item){
     const lowerCase = zooAnimals.map(function(item){
-      console.log(item.state.toLowerCase());
+    return item.animal_name.toLowerCase();
     });
+    return lowerCase
   }
- console.log(lowerCaseNames)
+//  console.log(lowerCaseNames)
   
   /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
   The zoo is concerned about animals with a lower population count. 
@@ -97,11 +97,12 @@ const zooAnimals = [
 
    function lowPopulationAnimals(item){
     const lowPop = zooAnimals.filter(function(item){
-      return item.population < 5;
+     return item.population < 5;
     });
+   return lowPop
    }
   
-
+  
   /* 🦁🦁🦁 Request 4: .reduce() 🦁🦁🦁
   The zoo needs to know their total animal population across the United States. 
   Using USApop find the total population from the zoos array using the .reduce() method. 
@@ -109,10 +110,11 @@ const zooAnimals = [
   */
 
    function USApop(acc ,item){
-  //   return acc + item.population;
-  }
-  // const totalPop = zooAnimals.reduce(USApop,0)
-  // console.log("Toatal Pop Across the USA is" + totalPop)
+     const zoos = zooAnimals.reduce(function(acc,item){
+       return acc + item.population;
+     },0)
+     return zoos
+   }
   
   // 🦁🦁🦁 Callbacks 🦁🦁🦁  
   /* 🦁🦁🦁 Step 1: Create a higher-order function 🦁🦁🦁
@@ -177,18 +179,17 @@ function CuboidMaker(pick){
 
 
   CuboidMaker.prototype.volume = function(){
- console.log(`${pick.length} * ${pick.width} * ${pick.height}`)
+     return this.length * this.width * this.height
 }
 
-
-
+CuboidMaker.prototype.volume()
 /* 🐴🐴🐴 Step 3: Surface Area Method 🐴🐴🐴
   Create another method called surfaceArea using CuboidMaker's prototype that returns the surface area of a given cuboid's length, width, and height. 
   Formula for cuboid surface area of a cube: 
   2 * (length * width + length * height + width * height)  */
 
   CuboidMaker.prototype.surfaceArea = function(){
-    return 2 * (pick.length * pick.width + length * height + width * height)
+    return 2 * ((this.length * this.width) + (this.length * this.height) + (this.width * this.height))
   }
 
 
