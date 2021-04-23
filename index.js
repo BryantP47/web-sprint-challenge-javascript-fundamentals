@@ -65,14 +65,16 @@ const zooAnimals = [
   displayNames will be an array of strings, and each string should follow this pattern: "name: {name}, scientific: {scientific name}"
   */
   
-  function animalNames(item){
-   const displayNAmes = zooAnimals.forEach(function(item){
-    return `name: ${item.animal_name}, scientific: ${item.scientific_name}`
+  function animalNames(){
+   const displayNames = [];
+    zooAnimals.forEach(function(item){
    
-   })
-  return displayNAmes
+   
+   });
+   return displayNames.push(`${item.animal_name}, ${item.scientific_name}`);
+  
    }
-console.log(animalNames)
+//  console.log(displayNames)
 
   /* 🦁🦁🦁 Request 2: .map() 🦁🦁🦁
   The zoo needs a list of all their animal's names converted to lower case. 
@@ -174,8 +176,8 @@ function CuboidMaker(pick){
   Formula for cuboid volume: length * width * height   */
 
 
-  CuboidMaker.prototype.volume = function(pick){
-  return pick.length * pick.width * pick.height
+  CuboidMaker.prototype.volume = function(){
+ console.log(`${pick.length} * ${pick.width} * ${pick.height}`)
 }
 
 
@@ -185,6 +187,9 @@ function CuboidMaker(pick){
   Formula for cuboid surface area of a cube: 
   2 * (length * width + length * height + width * height)  */
 
+  CuboidMaker.prototype.surfaceArea = function(){
+    return 2 * (pick.length * pick.width + length * height + width * height)
+  }
 
 
 
@@ -193,7 +198,7 @@ function CuboidMaker(pick){
   Create an object called cuboid that uses the new keyword to use our CuboidMaker constructor
   Add properties and values of length: 4, width: 5, and height: 5 to cuboid. */
 
-
+const cubiod = new CuboidMaker(4,5,5)
 
 
 
@@ -205,7 +210,7 @@ function CuboidMaker(pick){
 
 // 🦄🦄🦄 Topic 4: Classes 🦄🦄🦄 //
 //🦄🦄🦄 1. Take your prototypes from above and refactor into class syntax. Please rename your class CuboidMakerTwo and your object cuboidTwo 🦄🦄🦄
-class CuboidMakerTwo{
+class CuboidMakerTwo extends CuboidMaker{
 
 }
 
